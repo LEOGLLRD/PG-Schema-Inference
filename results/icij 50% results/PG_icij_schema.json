@@ -1,0 +1,411 @@
+{
+    "nodes": {
+        "Address": {
+            "address": "StrType ?",
+            "countries": "StrType ?",
+            "country_codes": "StrType ?",
+            "icij_id": "StrType ?",
+            "lastEditTimestamp": "NumType",
+            "name": "StrType ?",
+            "node_id": "NumType",
+            "note": "StrType ?",
+            "original_address": "StrType ?",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Entity": {
+            "address": "StrType ?",
+            "company_type": "StrType ?",
+            "countries": "StrType ?",
+            "country_codes": "StrType ?",
+            "dorm_date": "StrType ?",
+            "former_name": "StrType ?",
+            "ibcRUC": "NumType + StrType ?",
+            "inactivation_date": "StrType ?",
+            "incorporation_date": "StrType ?",
+            "internal_id": "NumType ?",
+            "jurisdiction": "StrType",
+            "jurisdiction_description": "StrType",
+            "lastEditTimestamp": "NumType",
+            "name": "NumType + StrType",
+            "node_id": "NumType",
+            "note": "StrType ?",
+            "original_name": "NumType + StrType ?",
+            "service_provider": "StrType ?",
+            "sourceID": "StrType",
+            "status": "StrType ?",
+            "struck_off_date": "StrType ?",
+            "tax_stat_description": "StrType ?",
+            "valid_until": "StrType"
+        },
+        "Intermediary": {
+            "address": "StrType ?",
+            "countries": "StrType ?",
+            "country_codes": "StrType ?",
+            "internal_id": "NumType + StrType ?",
+            "lastEditTimestamp": "NumType",
+            "name": "StrType ?",
+            "node_id": "NumType",
+            "note": "StrType ?",
+            "sourceID": "StrType",
+            "status": "StrType ?",
+            "valid_until": "StrType"
+        },
+        "Intermediary:Officer": {
+            "countries": "StrType",
+            "country_codes": "StrType",
+            "lastEditTimestamp": "NumType",
+            "name": "StrType",
+            "node_id": "NumType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Officer": {
+            "countries": "StrType ?",
+            "country_codes": "StrType ?",
+            "icij_id": "NumType + StrType ?",
+            "lastEditTimestamp": "NumType",
+            "name": "NumType + StrType ?",
+            "node_id": "NumType",
+            "note": "StrType ?",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        }
+    },
+    "edges": {
+        "Entity::registered_address::Address": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType ?",
+            "sourceID": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Officer::officer_of::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "end_date": "NumType + StrType ?",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType ?",
+            "sourceID": "StrType ?",
+            "start_date": "NumType + StrType ?",
+            "status": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Intermediary::intermediary_of::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType",
+            "sourceID": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Officer::registered_address::Address": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType ?",
+            "sourceID": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Officer::same_name_as::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType",
+            "sourceID": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Entity::same_name_as::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType"
+        },
+        "Entity::same_name_as::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType",
+            "sourceID": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Officer::same_name_as::Intermediary": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1",
+            "lastEditTimestamp": "NumType",
+            "link": "StrType"
+        },
+        "Intermediary::same_name_as::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "lastEditTimestamp": "NumType",
+            "link": "StrType"
+        },
+        "Intermediary::same_name_as::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType",
+            "sourceID": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Intermediary::same_name_as::Intermediary": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType",
+            "sourceID": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Officer::same_name_as::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "lastEditTimestamp": "NumType ?",
+            "link": "StrType",
+            "sourceID": "StrType ?",
+            "valid_until": "StrType ?"
+        },
+        "Other::same_name_as::Other": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "lastEditTimestamp": "NumType",
+            "link": "StrType"
+        },
+        "Other::underlying::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..1",
+            "lastEditTimestamp": "NumType",
+            "link": "StrType"
+        },
+        "Officer::officer_of::Intermediary": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Officer::officer_of::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "start_date": "NumType ?",
+            "valid_until": "StrType"
+        },
+        "Intermediary:Officer::intermediary_of::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Intermediary:Officer::officer_of::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "end_date": "StrType ?",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "start_date": "StrType ?",
+            "valid_until": "StrType"
+        },
+        "Intermediary::registered_address::Address": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Intermediary:Officer::registered_address::Address": {
+            "meta_mandatory": false,
+            "meta_cardinality": "1..* : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Officer::underlying::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Officer::underlying::Intermediary:Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Intermediary:Officer::underlying::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Entity::registered_address::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Officer::similar::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "link": "StrType"
+        },
+        "Intermediary:Officer::similar::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1",
+            "link": "StrType"
+        },
+        "Intermediary:Officer::similar::Intermediary:Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1",
+            "link": "StrType"
+        },
+        "Officer::similar::Intermediary:Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1",
+            "link": "StrType"
+        },
+        "Officer::similar::Intermediary": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..1",
+            "link": "StrType"
+        },
+        "Intermediary:Officer::similar::Intermediary": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1",
+            "link": "StrType"
+        },
+        "Intermediary::similar::Intermediary": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1",
+            "link": "StrType"
+        },
+        "Intermediary::similar::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType"
+        },
+        "Entity::same_as::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "link": "StrType"
+        },
+        "Address::same_as::Address": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..1",
+            "link": "StrType"
+        },
+        "Officer::same_name_as::Intermediary:Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Intermediary::officer_of::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "end_date": "StrType ?",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "start_date": "StrType ?",
+            "status": "StrType",
+            "valid_until": "StrType"
+        },
+        "Officer::officer_of::Other": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "end_date": "NumType",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "start_date": "NumType",
+            "valid_until": "StrType"
+        },
+        "Other::same_name_as::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Officer::same_id_as::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Entity::officer_of::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Other::connected_to::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Officer::connected_to::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Intermediary::connected_to::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*",
+            "link": "StrType",
+            "sourceID": "StrType",
+            "valid_until": "StrType"
+        },
+        "Entity::same_name_as::Other": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..*"
+        },
+        "Other::same_name_as::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1"
+        },
+        "Other::registered_address::Address": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..1"
+        },
+        "Intermediary::same_as::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1"
+        },
+        "Address::same_address_as::Address": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1"
+        },
+        "Entity::same_company_as::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..1"
+        },
+        "Intermediary::same_intermediary_as::Intermediary": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1"
+        },
+        "Entity::similar_company_as::Entity": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..1 : 0..1"
+        },
+        "Officer::probably_same_officer_as::Officer": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*"
+        },
+        "Intermediary:Officer::SubtypeOf::Intermediary": {},
+        "Intermediary:Officer::SubtypeOf::Officer": {}
+    }
+}

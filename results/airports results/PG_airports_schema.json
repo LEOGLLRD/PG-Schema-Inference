@@ -1,0 +1,139 @@
+{
+    "nodes": {
+        "Airport": {
+            "airport_id": "NumType",
+            "altitude": "NumType",
+            "city": "NumType + StrType ?",
+            "commercial_flights": "NumType ?",
+            "country": "StrType",
+            "distCity": "NumType ?",
+            "dst": "StrType",
+            "iata": "NumType + StrType",
+            "icao": "StrType",
+            "latitude": "NumType",
+            "location": [
+                "NumType"
+            ],
+            "longitude": "NumType",
+            "name": "StrType",
+            "runways": "NumType ?",
+            "runwaysLength": "NumType ?",
+            "runwaysWidth": "NumType ?",
+            "source": "StrType",
+            "timezone": "NumType + StrType",
+            "type": "StrType",
+            "tz_database_timezone": "StrType"
+        },
+        "City": {
+            "accent_name": "StrType ?",
+            "climate_index": "NumType ?",
+            "cost_of_living_index": "NumType ?",
+            "country": "StrType",
+            "countrycode": "StrType",
+            "health_care_index": "NumType ?",
+            "latitude": "NumType ?",
+            "location": [
+                "NumType ?"
+            ],
+            "longitude": "NumType ?",
+            "name": "StrType",
+            "pollution_index": "NumType ?",
+            "population": "NumType ?",
+            "property_price_to_income_ratio": "NumType ?",
+            "purchasing_power_index": "NumType ?",
+            "quality_of_life_index": "NumType ?",
+            "rank": "NumType ?",
+            "region": "NumType ?",
+            "safety_index": "NumType ?",
+            "traffic_commute_time_index": "NumType ?"
+        },
+        "Country": {
+            "NOMATCH": "StrType ?",
+            "agricultural_land": "NumType ?",
+            "alpha3": "StrType",
+            "armed_forces": "NumType ?",
+            "birth_rate": "NumType ?",
+            "calling_code": "NumType ?",
+            "capital": "StrType ?",
+            "co2_emissions": "NumType ?",
+            "code": "StrType",
+            "country_code": "NumType",
+            "cpi": "NumType ?",
+            "cpi_change": "NumType ?",
+            "currency_code": "StrType ?",
+            "education_primary": "NumType ?",
+            "education_tertiary": "NumType ?",
+            "fertility_rate": "NumType ?",
+            "forested_area": "NumType ?",
+            "gasoline_price": "NumType ?",
+            "gdp": "NumType ?",
+            "health_expenditure": "NumType ?",
+            "infant_mortality": "NumType ?",
+            "intermediate_region": "StrType ?",
+            "intermediate_region_code": "NumType ?",
+            "iso_3166_2": "StrType",
+            "labor_participation": "NumType ?",
+            "land_area": "NumType ?",
+            "language": "StrType ?",
+            "largest_city": "StrType ?",
+            "latitude": "NumType ?",
+            "life_expectancy": "NumType ?",
+            "longitude": "NumType ?",
+            "maternal_mortality": "NumType ?",
+            "minimum_wage": "NumType ?",
+            "name": "StrType",
+            "name2": "StrType ?",
+            "physicians": "NumType ?",
+            "population": "NumType ?",
+            "region": "StrType ?",
+            "region_code": "NumType ?",
+            "sub_region": "StrType ?",
+            "sub_region_code": "NumType ?",
+            "tax_revenue": "NumType ?",
+            "total_tax_rate": "NumType ?",
+            "unemployment": "NumType ?",
+            "urban_population": "NumType ?"
+        }
+    },
+    "edges": {
+        "Country::TRADE::Country": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "PartnerISO3": "StrType",
+            "PartnerName": "StrType",
+            "ReporterISO3": "StrType",
+            "ReporterName": "StrType",
+            "TradeFlowName": "StrType",
+            "TradeValue in 1000 USD": "NumType",
+            "Year": "NumType",
+            "flow": "StrType",
+            "value": "NumType"
+        },
+        "City::IN::Country": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..1"
+        },
+        "Airport::ROUTE_TO::Airport": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "airline": "StrType",
+            "airline_id": "NumType + StrType",
+            "distance": "NumType",
+            "duration": "NumType ?",
+            "equipment": "NumType + StrType ?",
+            "price": "NumType ?",
+            "stops": "NumType"
+        },
+        "Airport::OF::City": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..1"
+        },
+        "Airport::PASSENGERS::Airport": {
+            "meta_mandatory": false,
+            "meta_cardinality": "0..* : 0..*",
+            "nb_passengers": "NumType ?",
+            "nb_seats": "NumType ?",
+            "year": "NumType"
+        }
+    }
+}
