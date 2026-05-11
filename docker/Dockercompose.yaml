@@ -1,0 +1,12 @@
+services:
+  pgs-inference:
+    build: 
+      dockerfile: dockerfile
+    networks:
+      - topol
+
+networks:
+  topol:
+    external: true
+    name: topol
+    

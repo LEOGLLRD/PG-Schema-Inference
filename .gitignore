@@ -1,0 +1,52 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.cache/
+venv/
+env/
+.venv/
+pip-wheel-metadata/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and local config
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Environment files
+.env
+.env.*
+*.local
+
+# Build artifacts
+build/
+dist/
+eggs/
+parts/
+bin/
+var/
+*.egg
+*.wheel
+coverage.xml
+htmlcov/
