@@ -1,0 +1,25 @@
+{
+    "neo4j": {
+        "uri": "bolt://localhost:7687",
+        "user": "neo4j",
+        "password": "neo4jneo4j",
+        "database": "neo4j"
+    },
+    "mapreduce": {
+        "driver_memory": "2g",
+        "master": "local[*]",
+        "equiv_labels": "k",
+        "equiv_properties": "l"
+    },
+    "general": {
+        "load_into_neo4j": false,
+        "remove_superfluous_edges": true,
+        "python_memory_limit_gb": -1 
+    },
+    "extraction": {
+        "limitnodes_pct": 100,
+        "limitedges_pct": 100,
+        "num_workers": 4,
+        "fetch_size": 15000
+    }
+}

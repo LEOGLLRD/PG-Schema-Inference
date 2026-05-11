@@ -1,0 +1,43 @@
+# Use the official Python 3.14 Alpine image
+FROM python:3.14-alpine
+
+# Set environment variables to ensure Python output is not buffered
+ENV PYTHONUNBUFFERED=1
+
+# Set the working directory
+WORKDIR /app
+
+# Update package index and install OpenJDK 8 JRE
+RUN apk update && apk add openjdk8-jre
+
+# Set JAVA_HOME environment variable
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+
+# Install coreutils and procps for compatibility with Spark scripts on Alpine
+RUN apk add --no-cache coreutils procps
+
+# Download and extract Apache Spark
+ENV SPARK_VERSION=3.5.0
+ENV HADOOP_VERSION=3.3
+ENV SPARK_HOME=/opt/spark
+RUN wget -q https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
+    && tar -xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz -C /opt \
+    && mv /opt/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} ${SPARK_HOME} \
+    && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+
+# Set environment variables for Spark
+ENV PATH=$PATH:${SPARK_HOME}/bin
+ENV PYTHONPATH=${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-*.zip:$PYTHONPATH
+
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt .
+
+# Install Python dependencies, including PySpark and findspark
+RUN pip install --no-cache-dir pyspark findspark -r requirements.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Define the command to run the application
+CMD ["python", "app.py"]   
