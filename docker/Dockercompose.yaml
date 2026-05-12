@@ -1,7 +1,6 @@
 services:
   pgs-inference:
-    build: 
-      dockerfile: dockerfile
+    image: leogaillard/pg-schema-inference:latest
     networks:
       - topol
 
